@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: myreplivaset1
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: java
+  template:
+    metadata:
+      name: mavenwebapp1
+      labels:
+        app: java
+    spec:
+      containers:
+      - name: mavencontainer
+        image: dockerhandson/maven-web-app:1
+        ports:
+        - containerPort: 8080
