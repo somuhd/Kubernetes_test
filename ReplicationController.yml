@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: mavenrc
+spec:
+  replicas: 2
+  selector:
+    app: mavenwebapp
+  template:
+    metadata:
+      name: mavenwebapp
+      labels:
+        app: mavenwebapp
+    spec:
+      containers:
+      - name: mavencontainer
+        image: dockerhandson/maven-web-app:1
+        ports:
+        - containerPort: 8080
