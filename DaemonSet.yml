@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: Daemonsecheking
+spec: 
+  selector:
+    MatchLabels:
+      app: java
+   template:
+     metadata:
+       name: javawebapp
+       labels:
+         app: java
+       containers:
+       - name: javawebapp
+         image: dockerhandson/maven-web-app
+         ports:
+         - containerPort: 8080
