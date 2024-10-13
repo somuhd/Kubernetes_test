@@ -1,0 +1,43 @@
+apiVersion: v1
+kind: Deployment
+metadta:
+  name: deployment_test
+spec:
+  replicas: 2
+  type : ReCreate
+  selector:
+    MatchLabels: 
+      app: nginx
+  template:
+    metadata:
+      name: ngnix
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: ngnixtest
+        image: nginx
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: service
+metadata: 
+  name: nginxservice
+spec:
+  type: NodePort
+  selector:
+    Matchlabels:
+      app: ngnix
+  ports:
+    port: 88
+  - targetPort: 80
+    NodePort: 30035
+  
+  
+        
+        
+        
+        
+        
+        
